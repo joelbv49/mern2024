@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-screen h-screen flex flex-col items-center">
+        <h1 class="font-bold text-xl pt-10">calculator</h1>
+
+        <div class="flex flex-col   h-[55%] bg-slate-900 rounded-md mt-10 p-5">
+            <input id="display" class="outline-none rounded-md mt-10 py-3 px-4" type="text"  placeholder="Do your calculations">
+
+            <div class="grid grid-cols-4 gap-2 mt-10 ">
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('7')">7</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('8')">8</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('9')">9</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('/')">/</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('4')">4</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('5')">5</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('6')">6</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('*')">*</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('1')">1</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('2')">2</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('3')">3</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('-')">-</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('0')">0</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('.')">.</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="cal()">=</div>
+                <div class="bg-blue-400 text-center w-20 h-10 py-2 rounded-md cursor-pointer" , onclick="appendToDisplay('+')">+</div>
+                <div class="col-span-4 bg-red-400 text-center text-white py-2 rounded-md" onclick="clearDisplay()">clear</div>
+            </div>
+        </div>
+    </div>
+    <script src="simpleCal.js"></script>
+</body>
+</html>

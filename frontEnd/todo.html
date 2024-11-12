@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body class = "Fresca bg-zinc-200">
+    <div class="w-screen h-full ">
+        <div class=" mt-20 flex justify-center gap-5">
+            <input id = "input" type="text" class="w-[80%] py-2 px-4 rounded-md shadow-md outline-none" placeholder="Type anything">
+            <button class="w-20 bg-blue-400 text-white rounded-md" onclick="doAdd()">Add</button>
+        </div>
+
+        <ul id="list" class="mx-32 mt-10">
+            <!-- List items will be dynamically added here -->
+             <!-- <li class="bg-slate-400 w-fit px-2 py-1 rounded-md text-white">hello</li> -->
+        </ul>
+    </div>
+    <script>
+        // Function to add items to the list
+        function doAdd() {
+            let input = document.getElementById("input").value;
+
+            // if(input.trim() != ""){
+            //     let t = document.createElement("li");
+            //     t.innerText = input;
+            //     t.classList.add("bg-slate-400", "w-fit", "px-2", "py-1");
+            //     document.getElementById("list").appendChild(t);
+
+            //     document.getElementById("input").value = "";
+            // }
+            let ulElement=document.getElementById('list');
+            let listElement=document.createElement('li');
+            
+            listElement.innerText=input;
+            ulElement.appendChild(listElement);
+            
+        }
+    </script>
+</body>
+</html>

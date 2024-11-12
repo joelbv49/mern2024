@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body class="bg-zinc-300" >
+    <div class="h-screen w-screen flex justify-center items-center relative">
+        <div class="absolute top-[30%] space-y-10 flex flex-col justify-center bg-slate-400 p-8 rounded-lg  shadow-lg">
+            <h1 class="font-[Fresca] font-bold text-3xl ">Find sqaure/cube</h1>
+            <input id="input" type="text" placeholder="Enter the number" class="w-full py-1 px-4 rounded-md outline-none">
+
+            <div class="flex justify-between">
+                <button class="bg-blue-500  text-white px-4 py-1 rounded-md " onclick="sqaure()">Square</button>
+                <button class="bg-blue-500  text-white px-4 py-1 rounded-md " onclick="cube()">Cube</button>
+            </div>
+            
+            <p id="output" class = "font-bold text-black text-xl"></p>
+        </div>
+    </div>
+
+    <script>
+        const sqaure  = ()=>{
+            let input = document.getElementById("input").value;
+            if(input.trim()!= ""){
+                try{
+                    let num  = parseInt(input);
+                    let result = num * num;
+                    let out = document.getElementById("output");
+                    out.innerText = "Square of " + num + " is " + result;
+                }
+                catch(error){
+                    let out = document.getElementById("output");
+                    out.innerText = "Invalid input. Please enter a number.";
+                }
+            }
+        }
+
+        const cube = ()=>{
+            let input = document.getElementById("input").value;
+            if(input.trim()!= ""){
+                try{
+                    let num = parseInt(input);
+                    let result = num*num*num;
+                    let out = document.getElementById("output");
+
+                    out.innerText = "Cube of " + num + " is " + result;
+                }
+                catch(error){
+                    let out = document.getElementById("output");
+                    out.innerText = "Enter the valid input.";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body class = "bg-zinc-100 w-screen h-screen flex justify-center">
+    <div class="flex flex-col mt-10  w-1/2 shadow-lg px-10 relative">
+        <h1 class="font-bold text-3xl text-center">Shopping Cart</h1>
+
+        <p class="mt-10">product</p>
+        <input id="name" type="text" class = "mt-4 py-1 px-3" placeholder="Enter the product name" required>
+
+        <p class="mt-10">Quantity</p>
+        <input id="qty" type="text" class = "mt-4 py-1 px-3" placeholder="Enter the Quantity" required>
+
+        <p class="mt-10">Price</p>
+        <input id="price" type="text" class = "mt-4 py-1 px-3" placeholder="Enter the price" required>
+
+        <p class="mt-10">Amount</p>
+        <input id="amount" type="text" class = "mt-4 py-1 px-3" onclick="findAmount()" readonly>
+
+        <button class="bg-blue-400 py-1 px-2 w-32 mt-10" onclick="addItem()">Add</button>
+
+        <table class = "table-auto mt-10">
+            <thead class =" bg-slate-900 border-collapse border border-slate-400 text-white">
+                <tr>
+                    <th class="border border-slate-300">name</th>
+                    <th class="border border-slate-300">Quantity</th>
+                    <th class="border border-slate-300">price</th>
+                    <th class="border border-slate-300">amount</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody">
+                
+            </tbody>
+        </table>
+
+        <p id="totalamt" class="font-bold text-lg absolute bottom-0 right-20 "></p>
+    </div>
+    
+
+    <script>
+        const findAmount = ()=>{
+            let check = false;
+            const qty = isNaN(parseInt(document.getElementById("qty").value))?check = true:parseInt(document.getElementById("qty").value);
+            const price = isNaN(parseInt(document.getElementById("price").value))?check = true:parseInt(document.getElementById("price").value);
+            if(check){
+                alert("Please fill all the fields correctly");
+                return;
+            }
+            const amt = qty*price;
+            const amount = document.getElementById("amount");
+            amount.value = amt;
+        }
+        const cart = [];
+        const addItem = ()=>{
+            
+            let check = false;
+            const name = (document.getElementById("name").value == "")?check = true:document.getElementById("name").value;
+            const qty = isNaN((document.getElementById("qty").value))?check=true:document.getElementById("qty").value;
+            const price = isNaN((document.getElementById("price").value))?check = true:document.getElementById("price").value;
+            const amount = isNaN((document.getElementById("amount").value))?check =  true:document.getElementById("amount").value;
+
+            if(check){
+                console.log("Checking");
+                alert("Please fill all the fields correctly");
+                return;
+            }
+            const products = {
+                name:name,
+                quantity:qty,
+                price:price,
+                amount:amount
+            }
+            cart.push(products);
+            updateTable();
+
+            //reset
+            document.getElementById("name").value = "";
+            document.getElementById("qty").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("amount").value = "";
+        }
+        
+        
+        const updateTable = ()=>{
+            const cartBody = document.getElementById("cartBody");
+            cartBody.innerHTML = "";
+            cart.forEach(prod=>{
+                
+                const tr  = document.createElement("tr");
+                // table data
+                const nameTd = document.createElement("td");
+                const qtyTd = document.createElement("td");
+                const priceTd = document.createElement("td");
+                const amountTd = document.createElement("td");
+
+                nameTd.innerText = prod.name;
+                priceTd.innerText = prod.price;
+                qtyTd.innerText = prod.quantity;
+                amountTd.innerText = prod.amount;
+
+                //ADD STYLING TO TD
+                nameTd.classList.add("border", "border-slate-400", "text-center");
+                qtyTd.classList.add("border", "border-slate-400", "text-center");
+                priceTd.classList.add("border", "border-slate-400", "text-center");
+                amountTd.classList.add("border", "border-slate-400", "text-center");
+
+                tr.appendChild(nameTd);
+                tr.appendChild(qtyTd);
+                tr.appendChild(priceTd);
+                tr.appendChild(amountTd);
+
+                cartBody.appendChild(tr);
+
+                // total amount
+                const totalAmount = document.getElementById("totalamt");
+                const total = cart.reduce((sum,prod)=>{
+                    return sum+prod.amount; 
+                },0);
+                totalAmount.innerText = "Total: " +total;
+            });
+        }
+        
+      
+
+    </script>
+</body>
+</html>
