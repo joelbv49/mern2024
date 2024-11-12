@@ -1,0 +1,15 @@
+{
+  "name": "mern2024",
+  "version": "1.0.0",
+  "description": "this course is to  learn mern stack dec 2024",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1"
+  }
+}
